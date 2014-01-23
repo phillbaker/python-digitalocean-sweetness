@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Python + DigitalOcean = Sweetness</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Python + <br>DigitalOcean = Sweetness</h1>
+					<h3>Quickly scaling and deploying Droplets</h3>
+					<p>
+						<small><a href="#">Sean Swehla</a> / <a href="http://twitter.com/phillbaker">Phill Baker</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>What's Digital Ocean?</h2>
+					<img src="img/do_home.png" alt="">
+				</section>
+
+				<section data-transition="none">
+					<h2>What's Digital Ocean?</h2>
+					<img src="img/do_home_em.png" alt="">
+				</section>
+
+				<section>
+					<img src="img/do_control.png" alt="">
+				</section>
+
+				<section>
+					<img src="img/do_api.png" alt="">
+					<a href="https://developers.digitalocean.com/">API Docs</a>
+				</section>
+
+				<section>
+					<h2>DigitalOcean pythonic style</h2>
+					<img src="img/py-do.png" alt="">
+				</section>
+
+				<section>
+					<h2>#digitalocean.py</h2>
+					<pre><code data-trim contenteditable>
+#!/usr/bin/python
+
+import digitalocean
+
+manager = digitalocean.Manager(client_id=id, api_key=key)
+
+ny_region_id = 1
+ubuntu_1204_image_id = 473123
+small_size_id = 66
+
+droplet = digitalocean.Droplet(
+	client_id=id,
+	api_key=key,
+	name = 'do1.phillbaker.com',
+	region_id=ny_region_id,
+	image_id=ubuntu_1204_image_id,
+	size_id=small_size_id,
+	backup_active=False
+)
+droplet.create() # Boom!
+
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>The Goal!</h2>
+					<blockquote cite="">
+						&ldquo;Spin up app servers, <br>add them to the load balancer, <br>scale in realtime,<br>profit!&rdquo;
+					</blockquote>
+				</section>
+
+				<section>
+					<h1>Demo!!!</h1>
+				</section>
+
+				<section>
+					<h3>What do I do with this <br>really, really simple demo?</h3>
+					<ul>
+						<li>Idemnipotent deploys</li>
+						<li>Auto scaling based on traffic events</li>
+						<li>On demand compute</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>THE END</h1>
+					<h3>Questions? Snarky comments? Answers?</h3>
+					<br>
+					<h3>digitalocean.com/jobs <small><- you know you want to</small></h3>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme || 'night', // available themes are in /css/theme: simple/serif/sky/moon
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
